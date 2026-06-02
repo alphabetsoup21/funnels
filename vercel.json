@@ -1,9 +1,12 @@
 {
-  "redirects": [
+  "routes": [
     {
-      "source": "/((?!landingpage|welcome).*)",
-      "destination": "/landingpage",
-      "permanent": false
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "status": 302,
+      "headers": { "Location": "/landingpage" }
     }
   ]
 }
