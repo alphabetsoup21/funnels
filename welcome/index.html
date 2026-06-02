@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Virtual one-on-one SAT & ACT tutoring built around your student. Book a free 30-minute parent strategy call.">
+  <title>Franklin Yard — SAT &amp; ACT Tutoring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  .fy-optin {
+    --ink: #162144;
+    --ink-soft: #2a2e3a;
+    --ink-faint: rgba(22, 33, 68, 0.55);
+    --magenta: #EE3292;
+    --magenta-dark: #D02780;
+    --bone: #F5F5F2;
+    --cream: #EEEEEB;
+    --rule: rgba(22, 33, 68, 0.14);
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--bone);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 92px;
+  }
+  @media (min-width: 760px) { .fy-optin { padding-bottom: 0; } }
+
+  .fy-optin * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .fy-optin .top-bar {
+    background: var(--bone);
+    color: var(--ink);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .fy-optin .top-bar .brand img { display: block; height: 38px; width: auto; }
+  .fy-optin .top-bar .mini {
+    font-family: var(--sans); font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-faint); display: none;
+  }
+  @media (min-width: 700px) { .fy-optin .top-bar .mini { display: block; } }
+
+  .fy-optin .wrap { width: min(calc(100% - 32px), 820px); margin: 0 auto; }
+
+  .fy-optin .hero { padding: 52px 0 12px; text-align: center; }
+  .fy-optin .eyebrow {
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 14px;
+  }
+  .fy-optin h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(36px, 5.2vw, 56px); line-height: 1.02;
+    letter-spacing: -0.025em; color: var(--ink); margin-bottom: 18px;
+  }
+  .fy-optin .subhead {
+    font-family: var(--sans); font-size: 17px; line-height: 1.55;
+    color: var(--ink-soft); margin: 0 auto 18px; max-width: 56ch;
+  }
+
+  .fy-optin .pre-video-booking {
+    font-family: var(--sans); font-size: 14px;
+    color: var(--ink-soft); margin: 0 auto 20px;
+  }
+  .fy-optin .pre-video-booking a {
+    color: var(--magenta-dark); font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(208, 39, 128, 0.35);
+    cursor: pointer;
+  }
+  .fy-optin .pre-video-booking a:hover { border-bottom-color: var(--magenta-dark); }
+
+  .fy-optin .cta-row {
+    display: flex; flex-direction: column; gap: 12px;
+    align-items: center; justify-content: center; margin-bottom: 14px;
+  }
+  @media (min-width: 600px) { .fy-optin .cta-row { flex-direction: row; } }
+  .fy-optin .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 50px; padding: 0 28px; border-radius: 4px;
+    font-family: var(--sans); font-weight: 600; font-size: 15px;
+    letter-spacing: 0.01em; text-decoration: none;
+    border: 1.5px solid var(--ink); transition: opacity 0.15s ease; cursor: pointer;
+  }
+  .fy-optin .btn-primary { background: var(--magenta); color: white; border-color: var(--magenta); }
+  .fy-optin .btn-primary:hover { opacity: 0.9; }
+
+  .fy-optin .call-summary {
+    background: white; border: 1px solid var(--ink); border-radius: 6px;
+    padding: 26px 28px 24px; margin: 2px 0 18px; text-align: center;
+  }
+  .fy-optin .call-kicker {
+    display: inline-block; font-family: var(--sans);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--magenta-dark); margin-bottom: 10px;
+  }
+  .fy-optin .call-summary h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(26px, 3.4vw, 34px); line-height: 1.05;
+    letter-spacing: -0.025em; color: var(--ink); margin-bottom: 10px;
+  }
+  .fy-optin .call-summary p {
+    font-family: var(--sans); font-size: 15px; line-height: 1.6;
+    color: var(--ink-soft); margin: 0 auto 16px; max-width: 58ch;
+  }
+  .fy-optin .call-summary ul {
+    list-style: none; padding: 0; margin: 0 auto;
+    max-width: 58ch; text-align: center;
+  }
+  .fy-optin .call-summary li {
+    font-family: var(--sans); font-size: 14px; line-height: 1.5;
+    color: var(--ink); padding: 6px 0 6px 20px; position: relative; text-align: left;
+  }
+  .fy-optin .call-summary li::before {
+    content: ''; position: absolute; left: 0; top: 15px;
+    width: 8px; height: 1px; background: var(--magenta);
+  }
+  .fy-optin .call-summary-note {
+    margin-top: 14px !important; margin-bottom: 0 !important;
+    font-size: 13px !important; color: var(--ink-faint) !important;
+  }
+
+  .fy-optin .reassurance {
+    font-family: var(--sans); font-size: 13px; line-height: 1.5;
+    color: var(--ink-faint); max-width: 60ch; margin: 0 auto 26px;
+  }
+
+  .fy-optin .card {
+    background: white; border: 1px solid var(--ink); border-radius: 6px;
+    padding: 24px 26px; margin-bottom: 28px;
+  }
+
+  .fy-optin .video-card { padding: 0; overflow: hidden; margin-bottom: 26px; }
+  .fy-optin .hero-video {
+    display: block; width: 100%; aspect-ratio: 16 / 9;
+    background: var(--ink); border-bottom: 1px solid var(--ink);
+  }
+
+  .fy-optin .section { padding: 44px 0 20px; text-align: center; }
+  .fy-optin .section-eyebrow {
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--magenta); margin-bottom: 10px; display: block;
+  }
+  .fy-optin .section h2 {
+    font-family: var(--sans); font-weight: 600;
+    font-size: clamp(24px, 3.4vw, 32px); line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px;
+  }
+  .fy-optin .section p {
+    font-family: var(--sans); font-size: 16px; line-height: 1.65;
+    color: var(--ink-soft); margin: 0 auto 14px; max-width: 64ch;
+  }
+
+  .fy-optin .student-grid {
+    display: grid; grid-template-columns: 1fr; gap: 22px; margin-bottom: 14px;
+  }
+  @media (min-width: 700px) { .fy-optin .student-grid { grid-template-columns: 1fr 1fr; gap: 26px; } }
+
+  .fy-optin .quote-card {
+    background: white; border: 1px solid var(--ink); border-radius: 6px;
+    padding: 28px 26px 26px; text-align: center;
+  }
+  .fy-optin .quote-card .score-display {
+    font-family: var(--serif); font-weight: 400; font-size: 42px;
+    line-height: 1; color: var(--ink);
+    letter-spacing: -0.025em; margin-bottom: 6px;
+  }
+  .fy-optin .quote-card .score-display .arrow {
+    color: var(--magenta); font-weight: 400; padding: 0 4px;
+  }
+  .fy-optin .quote-card .score-meta {
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 18px;
+    padding-bottom: 18px; border-bottom: 1px solid var(--rule);
+  }
+  .fy-optin .quote-card blockquote {
+    font-family: var(--sans); font-weight: 400; font-size: 16px;
+    line-height: 1.55; color: var(--ink);
+  }
+  .fy-optin .quote-card .attribution {
+    display: block; margin-top: 14px;
+    font-family: var(--sans); font-size: 12px;
+    color: var(--ink-faint); letter-spacing: 0.05em;
+  }
+
+  .fy-optin .about-module {
+    background: white; border: 1px solid var(--ink); border-radius: 8px;
+    padding: 34px 28px;
+  }
+  .fy-optin .about-module h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(30px, 4.4vw, 44px); line-height: 1.02;
+    letter-spacing: -0.025em; max-width: 720px; margin: 0 auto;
+  }
+  .fy-optin .about-module > p { margin: 14px auto 0; max-width: 720px; }
+  .fy-optin .about-panels {
+    display: grid; grid-template-columns: 1fr; gap: 0;
+    margin: 30px auto 0; max-width: 720px;
+    border-top: 1px solid var(--rule);
+  }
+  @media (min-width: 760px) {
+    .fy-optin .about-panels { grid-template-columns: 1fr 1fr; }
+  }
+  .fy-optin .about-panel {
+    background: transparent; border: 0; padding: 24px 0 0; text-align: left;
+  }
+  .fy-optin .about-panel + .about-panel {
+    margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--rule);
+  }
+  @media (min-width: 760px) {
+    .fy-optin .about-panel { padding: 24px 28px 0 0; }
+    .fy-optin .about-panel + .about-panel {
+      margin-top: 0; padding: 24px 0 0 28px;
+      border-top: 0; border-left: 1px solid var(--rule);
+    }
+  }
+  .fy-optin .about-panel h3 {
+    font-family: var(--sans); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--magenta-dark); margin-bottom: 12px;
+  }
+  .fy-optin .about-panel p {
+    font-family: var(--sans); font-size: 15px; line-height: 1.58;
+    color: var(--ink-soft); margin: 0 0 14px;
+  }
+  .fy-optin .panel-illus {
+    display: block; width: 100%; max-width: 160px; height: auto;
+    margin: 4px auto 18px; mix-blend-mode: multiply;
+  }
+  .fy-optin .fy-bullets {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 8px; text-align: left;
+  }
+  .fy-optin .fy-bullets li {
+    font-family: var(--sans); font-size: 14px; line-height: 1.45;
+    color: var(--ink); padding: 5px 0 5px 18px; position: relative;
+  }
+  .fy-optin .fy-bullets li::before {
+    content: ''; position: absolute; left: 0; top: 14px;
+    width: 8px; height: 1px; background: var(--magenta);
+  }
+
+  .fy-optin details {
+    background: white; border: 1px solid var(--ink); border-radius: 4px;
+    margin-bottom: 10px; text-align: left;
+  }
+  .fy-optin summary {
+    font-family: var(--sans); font-weight: 600; font-size: 16px;
+    color: var(--ink); cursor: pointer; list-style: none;
+    padding: 16px 20px; display: flex; justify-content: space-between;
+    align-items: center; letter-spacing: -0.005em;
+  }
+  .fy-optin summary::-webkit-details-marker { display: none; }
+  .fy-optin summary::after {
+    content: '+'; font-family: var(--serif); font-size: 24px;
+    color: var(--magenta); line-height: 1; width: 24px;
+    text-align: center; font-weight: 300;
+  }
+  .fy-optin details[open] summary::after { content: '−'; }
+  .fy-optin details .answer {
+    padding: 0 20px 18px; font-family: var(--sans); font-size: 15px;
+    line-height: 1.6; color: var(--ink-soft); text-align: left;
+  }
+
+  .fy-optin .final-cta-card {
+    background: white; border: 1px solid var(--ink); border-radius: 6px;
+    padding: 32px 28px 28px; margin-bottom: 60px; text-align: center;
+  }
+  .fy-optin .final-cta-card h2 {
+    font-family: var(--sans); font-weight: 600; font-size: 22px;
+    line-height: 1.15; color: var(--ink);
+    margin-bottom: 10px; letter-spacing: -0.015em;
+  }
+  .fy-optin .final-cta-card p {
+    font-family: var(--sans); font-size: 15px; line-height: 1.55;
+    color: var(--ink-soft); max-width: 56ch; margin: 0 auto 20px;
+  }
+  .fy-optin .final-cta-card .btn { margin-left: auto; margin-right: auto; }
+  .fy-optin .final-cta-tiny {
+    margin-top: 14px !important; font-size: 12px !important;
+    color: var(--ink-faint) !important;
+  }
+
+  .fy-optin .fy-footer {
+    background: var(--ink); color: rgba(245, 245, 242, 0.5);
+    padding: 24px 24px 28px; text-align: center;
+    font-family: var(--sans); font-size: 11px; line-height: 1.65;
+    border-top: 1px solid rgba(245, 245, 242, 0.08);
+  }
+  .fy-optin .fy-footer .contact-line { color: var(--bone); font-size: 13px; margin-bottom: 12px; }
+  .fy-optin .fy-footer .disclaimer { max-width: 70ch; margin: 0 auto 10px; }
+  .fy-optin .fy-footer .legal a {
+    color: rgba(245, 245, 242, 0.5); text-decoration: none; margin: 0 8px;
+  }
+
+  .fy-optin .sticky-cta {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--bone); border-top: 1px solid var(--ink);
+    padding: 12px 16px; z-index: 50;
+  }
+  .fy-optin .sticky-cta .btn { display: flex; width: 100%; }
+  .fy-optin .sticky-cta-note {
+    margin-top: 6px; text-align: center;
+    font-family: var(--sans); font-size: 11px; color: var(--ink-faint);
+  }
+  @media (min-width: 760px) { .fy-optin .sticky-cta { display: none; } }
+
+  .fy-optin .modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(22, 33, 68, 0.6); z-index: 100;
+    align-items: center; justify-content: center;
+  }
+  .fy-optin .modal-overlay.active { display: flex; }
+  .fy-optin .modal-box {
+    background: white; border-radius: 8px; padding: 32px 28px;
+    width: min(calc(100% - 32px), 560px); max-height: 90vh;
+    overflow-y: auto; position: relative;
+    box-shadow: 0 20px 60px rgba(22, 33, 68, 0.25);
+  }
+  .fy-optin .modal-close {
+    position: absolute; top: 12px; right: 16px;
+    background: none; border: none; font-size: 28px; line-height: 1;
+    color: var(--ink-faint); cursor: pointer; font-family: var(--sans);
+  }
+  .fy-optin .modal-close:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="fy-optin">
+
+  <div class="top-bar">
+    <div class="brand">
+      <img src="https://assets.cdn.filesafe.space/XNOWNbUvBeRrdoIC6YIq/media/69f260b0663e5f92fffb8c7e.png" alt="Franklin Yard">
+    </div>
+    <div class="mini">Virtual One-on-One SAT &amp; ACT Tutoring</div>
+  </div>
+
+  <div class="wrap">
+
+    <section class="hero">
+      <div class="eyebrow">Thanks for reaching out</div>
+      <h1>Not sure what your student needs for the SAT or ACT? Start with a clear plan.</h1>
+      <p class="subhead">Franklin Yard is virtual, one-on-one SAT and ACT tutoring built around your student. In the video below, founder Sam Bellows explains why we built the company and how our approach to one-on-one test prep is different.</p>
+
+      <p class="pre-video-booking">Already know you want to talk? <a href="#" onclick="document.getElementById('optinModal').classList.add('active');return false;">Book Your Free 30min Assessment.</a></p>
+
+      <section class="card video-card">
+        <video class="hero-video" controls preload="metadata" playsinline poster="/landingpage/poster.jpg">
+          <source src="/landingpage/vsl.mp4" type="video/mp4">
+        </video>
+      </section>
+
+      <div class="cta-row">
+        <a href="#" class="btn btn-primary" onclick="document.getElementById('optinModal').classList.add('active');return false;">Book Your Free 30min Assessment</a>
+      </div>
+
+      <p class="reassurance">Pay as you go. No large upfront package.</p>
+
+      <div class="call-summary">
+        <span class="call-kicker">Free 30-minute parent strategy call</span>
+        <h2>Talk through the plan before you decide on tutoring.</h2>
+        <p>We'll help you make sense of where your student is now, what they're aiming for, and whether Franklin Yard is the right next step.</p>
+        <ul>
+          <li>Your student's grade, timeline, goals, and current scores if you have them</li>
+          <li>Whether the SAT or ACT makes more sense</li>
+          <li>Whether tutoring makes sense right now</li>
+          <li>What tutor matching, scheduling, and next steps would look like</li>
+        </ul>
+        <p class="call-summary-note">No obligation. If tutoring is not the right move, we'll say so.</p>
+      </div>
+
+    </section>
+
+    <section class="section">
+      <span class="section-eyebrow">A few student stories</span>
+      <h2>Real students. Real score jumps.</h2>
+      <div class="student-grid">
+        <div class="quote-card">
+          <div class="score-display">1100 <span class="arrow">→</span> 1510</div>
+          <div class="score-meta">PSAT to SAT · +410 points</div>
+          <blockquote>"It's a game changer for her — puts certain schools that were completely out of reach now in the reach zone. You held her to it and she got it done."</blockquote>
+          <span class="attribution">— Caroline's mom</span>
+        </div>
+        <div class="quote-card">
+          <div class="score-display">1120 <span class="arrow">→</span> 1420</div>
+          <div class="score-meta">PSAT to SAT · +300 points</div>
+          <blockquote>"Sam made a point to form a personal relationship with me. He asked about my football and lacrosse seasons. He congratulated me after I got into my number-one choice school."</blockquote>
+          <span class="attribution">— Sam G., student</span>
+        </div>
+        <div class="quote-card">
+          <div class="score-display">26 <span class="arrow">→</span> 32</div>
+          <div class="score-meta">ACT · +6 points</div>
+          <blockquote>"You don't have to be a genius to get a high score. The secret for me was really just kind of understanding how to take the test."</blockquote>
+          <span class="attribution">— Aubry D., student</span>
+        </div>
+        <div class="quote-card">
+          <div class="score-display">23 <span class="arrow">→</span> 33</div>
+          <div class="score-meta">ACT diagnostic to ACT · +10 points</div>
+          <blockquote>"Got a 33!! Reached my goal! Thank you so much for everything couldn't have done it without you!"</blockquote>
+          <span class="attribution">— Charlotte F., student</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="section-eyebrow">More from families</span>
+      <h2>Read more parent and student feedback.</h2>
+      <div class="card" style="padding: 18px;">
+        <div class="senja-embed" data-id="b3f56290-8c08-4008-aed3-0ee6aba5327a" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="about-module">
+        <span class="section-eyebrow">What Franklin Yard is</span>
+        <h2>Virtual one-on-one tutoring built around what's actually costing points.</h2>
+        <p>Most families come to us because their student is capable, but the score does not quite match. Our job is to figure out whether the issue is content, timing, strategy, anxiety, review habits, or simply not knowing how the test works.</p>
+
+        <div class="about-panels">
+          <article class="about-panel">
+            <h3>How tutoring works</h3>
+            <img src="https://assets.cdn.filesafe.space/XNOWNbUvBeRrdoIC6YIq/media/6a051b62f7d455340c7dd8c9.webp" alt="" class="panel-illus">
+            <ul class="fy-bullets">
+              <li>Virtual one-on-one tutoring, not a course or a chain</li>
+              <li>A dedicated tutor matched to your student's goals, personality, and schedule</li>
+              <li>A practical plan built around practice results</li>
+              <li>Pay as you go, with no large upfront commitment</li>
+            </ul>
+          </article>
+
+          <article class="about-panel">
+            <h3>The tutor team</h3>
+            <img src="https://assets.cdn.filesafe.space/XNOWNbUvBeRrdoIC6YIq/media/6a051b62601d54df8253abcd.png" alt="" class="panel-illus">
+            <p>Our tutors are seriously qualified. Maybe unreasonably so. Across the team, you'll find PhDs, Ivy League grads, National Merit Scholars, published writers, subject-matter experts, and tutors with top test scores.</p>
+            <p>Credentials are only part of the story. We care most about whether a tutor can explain clearly, adapt to the student, and turn practice into actual improvement.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="section-eyebrow">Common questions</span>
+      <h2>Things parents ask before they book.</h2>
+
+      <details>
+        <summary>How do I know whether my child actually needs tutoring?</summary>
+        <div class="answer">That's exactly what the first call is for. We'll talk through current scores, goals, and timeline before you decide whether tutoring makes sense. If we don't think tutoring is the right move, we'll say so.</div>
+      </details>
+
+      <details>
+        <summary>How does virtual tutoring actually work?</summary>
+        <div class="answer">Sessions run over Zoom with a shared digital whiteboard and screen-sharing. Tutors mark up problems in real time and pull up Desmos, College Board materials, or whatever the student needs. Many families find it works just as well as in-person, without the driving.</div>
+      </details>
+
+      <details>
+        <summary>Do I have to commit to a package up front?</summary>
+        <div class="answer">No. We bill hourly as you go. Many families start with a few sessions to see how the fit feels, then continue if it's working. We'll never push a large package on the first call.</div>
+      </details>
+
+      <details>
+        <summary>Should my student take the SAT or the ACT?</summary>
+        <div class="answer">It depends on the student. Some score noticeably better on one than the other, and the best way to find out is a short diagnostic of each. We'll talk through this on the call and help you figure out whether the choice is settled or still open.</div>
+      </details>
+
+      <details>
+        <summary>What does it cost?</summary>
+        <div class="answer">We bill hourly as you go. Rates depend on tutor experience and the type of support your student needs, and we'll explain the exact rate before you decide whether to start. There's no large upfront package.</div>
+      </details>
+    </section>
+
+  </div>
+
+  <div class="wrap" style="margin-top: 16px;">
+    <section class="final-cta-card" id="book">
+      <h2>Ready to talk it through?</h2>
+      <p>Book a 30-minute parent strategy call and get a clearer sense of what your student actually needs next.</p>
+      <a href="#" class="btn btn-primary" onclick="document.getElementById('optinModal').classList.add('active');return false;">Book Your Free 30min Assessment</a>
+      <p class="final-cta-tiny">Free 30-min call · virtual · no obligation. If tutoring isn't the right next step, we'll tell you that too.</p>
+    </section>
+  </div>
+
+  <div class="fy-footer">
+    <div class="contact-line">A real person reads every inquiry.</div>
+    <div class="disclaimer">
+      This site is not affiliated with or endorsed by Meta, Facebook, Instagram, Google, YouTube, Microsoft, or Bing.
+    </div>
+    <div class="legal">
+      <a href="#">Terms and Conditions</a> · <a href="#">Privacy Policy</a>
+    </div>
+    <div class="copyright" style="margin-top:10px;">© 2026 Franklin Yard. All Rights Reserved.</div>
+  </div>
+
+  <!-- Opt-in Modal -->
+  <div class="modal-overlay" id="optinModal" onclick="if(event.target===this)this.classList.remove('active');">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('optinModal').classList.remove('active');">&times;</button>
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/BZQxaVHGyJMW5zY644Ph"
+        style="width:100%;height:544px;border:none;border-radius:3px"
+        id="inline-BZQxaVHGyJMW5zY644Ph"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Landing Page Opt In Form"
+        data-height="544"
+        data-layout-iframe-id="inline-BZQxaVHGyJMW5zY644Ph"
+        data-form-id="BZQxaVHGyJMW5zY644Ph"
+        title="Landing Page Opt In Form"
+      ></iframe>
+      <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+    </div>
+  </div>
+
+  <div class="sticky-cta">
+    <a href="#" class="btn btn-primary" onclick="document.getElementById('optinModal').classList.add('active');return false;">Book Your Free 30min Assessment</a>
+    <div class="sticky-cta-note">Free 30-min call · virtual · no obligation</div>
+  </div>
+
+</div>
+
+<script src="https://widget.senja.io/widget/b3f56290-8c08-4008-aed3-0ee6aba5327a/platform.js" type="text/javascript" async></script>
+
+<script>
+  (function () {
+    var allowed = [
+      "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term",
+      "fbclid", "lead_id", "meta_lead_id",
+      "name", "first_name", "last_name", "email", "phone"
+    ];
+    var current = new URLSearchParams(window.location.search);
+    var kept = new URLSearchParams();
+    allowed.forEach(function (key) {
+      if (current.has(key)) kept.set(key, current.get(key));
+    });
+    if (Array.from(kept).length === 0) return;
+    document.querySelectorAll("[data-scheduler='true']").forEach(function (link) {
+      try {
+        var url = new URL(link.href, window.location.origin);
+        kept.forEach(function (value, key) { url.searchParams.set(key, value); });
+        link.href = url.toString();
+      } catch (e) { /* skip */ }
+    });
+  })();
+</script>
+
+</body>
+</html>
