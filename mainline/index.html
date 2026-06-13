@@ -572,6 +572,28 @@
   })();
 </script>
 
+<!-- Schedule-button click tracking (Meta Pixel) -->
+<script>
+  (function () {
+    var PAGE = 'mainline';
+    function locOf(el) {
+      if (el.closest('.sticky-cta')) return 'sticky';
+      if (el.closest('.final-cta-card')) return 'final';
+      if (el.closest('.cta-row')) return 'hero';
+      if (el.closest('.pre-video-booking')) return 'pre-video';
+      if (el.closest('.modal-overlay')) return 'modal';
+      return 'other';
+    }
+    document.querySelectorAll('[data-scheduler="true"]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'ScheduleClick', { page: PAGE, location: locOf(el) });
+        }
+      });
+    });
+  })();
+</script>
+
 <!-- Vercel Web Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>
 
