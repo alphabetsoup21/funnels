@@ -31,9 +31,10 @@
     --ink-soft: #2a2e3a;
     --ink-faint: rgba(22, 33, 68, 0.55);
     --magenta: #EE3292;
-    --magenta-dark: #D02780;
-    --bone: #FAFAF7;
-    --cream: #EEEEEB;
+    --magenta-dark: #C81E73;
+    --blue: #5368D0;
+    --bone: #F1F3FA;
+    --cream: #E6E9F8;
     --rule: rgba(22, 33, 68, 0.14);
     --serif: 'Instrument Serif', Georgia, serif;
     --sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -46,6 +47,9 @@
   }
 
   .fy-optin * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+  .fy-optin #schedule { scroll-margin-top: 16px; }
 
   .fy-optin .top-bar {
     background: var(--bone);
@@ -88,11 +92,11 @@
     color: var(--ink-soft); margin: 0 auto 20px;
   }
   .fy-optin .pre-video-booking a {
-    color: var(--magenta-dark); font-weight: 700;
+    color: var(--blue); font-weight: 700;
     text-decoration: none;
-    border-bottom: 1px solid rgba(208, 39, 128, 0.35);
+    border-bottom: 1px solid rgba(83, 104, 208, 0.35);
   }
-  .fy-optin .pre-video-booking a:hover { border-bottom-color: var(--magenta-dark); }
+  .fy-optin .pre-video-booking a:hover { border-bottom-color: var(--blue); }
 
   .fy-optin .cta-row {
     display: flex; flex-direction: column; gap: 12px;
@@ -106,7 +110,7 @@
     letter-spacing: 0.01em; text-decoration: none;
     border: 1.5px solid var(--ink); transition: opacity 0.15s ease; cursor: pointer;
   }
-  .fy-optin .btn-primary { background: var(--magenta); color: white; border-color: var(--magenta); }
+  .fy-optin .btn-primary { background: var(--blue); color: white; border-color: var(--blue); }
   .fy-optin .btn-primary:hover { opacity: 0.9; }
 
   .fy-optin .call-summary {
@@ -357,7 +361,7 @@
       <h1>Main Line families want a smarter SAT/ACT plan.</h1>
       <p class="subhead">Franklin Yard is virtual, one-on-one SAT and ACT tutoring built around your student — and our students improve 3.2× more than the national average. In the video below, co-founder Sam Bellows explains how we help families build a smarter plan.</p>
 
-      <p class="pre-video-booking">Already know you want to talk? <a href="https://go.franklinyard.com/booking-page" data-scheduler="true">Book a 30-minute strategy call.</a></p>
+      <p class="pre-video-booking">Already know you want to talk? <a href="#schedule" data-scheduler="true">Book a 30-minute strategy call.</a></p>
 
       <section class="card video-card">
         <video class="hero-video" controls preload="metadata" playsinline poster="/landingpage/poster.jpg">
@@ -366,7 +370,7 @@
       </section>
 
       <div class="cta-row">
-        <a href="https://go.franklinyard.com/booking-page" class="btn btn-primary" data-scheduler="true">Book a 30-minute strategy call</a>
+        <a href="#schedule" class="btn btn-primary" data-scheduler="true">Book a 30-minute strategy call</a>
       </div>
 
       <p class="reassurance">Pay as you go. No large upfront package.</p>
@@ -403,6 +407,17 @@
         <p class="call-summary-note">No obligation. If tutoring is not the right move, we'll say so.</p>
       </div>
 
+    </section>
+
+    <section class="section" id="schedule">
+      <span class="section-eyebrow">Pick a time</span>
+      <h2>Book your free 30-minute parent strategy call.</h2>
+      <p>Choose a time below that works for you. No obligation — if tutoring isn't the right next step, we'll tell you that too.</p>
+      <div class="card" style="padding: 12px;">
+        <iframe src="https://api.leadconnectorhq.com/widget/booking/Fsxp0G1eFMxJJnLDPBfp"
+          style="width:100%;border:none;overflow:hidden;min-height:700px;"
+          scrolling="no" id="Fsxp0G1eFMxJJnLDPBfp_1781565974602"></iframe>
+      </div>
     </section>
 
     <section class="section">
@@ -508,7 +523,7 @@
     <section class="final-cta-card" id="book">
       <h2>Ready to talk it through?</h2>
       <p>Book a 30-minute parent strategy call and get a clearer sense of what your student actually needs next.</p>
-      <a href="https://go.franklinyard.com/booking-page" class="btn btn-primary" data-scheduler="true">Book a 30-minute strategy call</a>
+      <a href="#schedule" class="btn btn-primary" data-scheduler="true">Book a 30-minute strategy call</a>
       <p class="final-cta-tiny">Free 30-min call · virtual · no obligation. If tutoring isn't the right next step, we'll tell you that too.</p>
     </section>
   </div>
@@ -528,7 +543,7 @@
   </div>
 
   <div class="sticky-cta">
-    <a href="https://go.franklinyard.com/booking-page" class="btn btn-primary" data-scheduler="true">Book a 30-minute strategy call</a>
+    <a href="#schedule" class="btn btn-primary" data-scheduler="true">Book a 30-minute strategy call</a>
     <div class="sticky-cta-note">Free 30-min call · virtual · no obligation</div>
   </div>
 
@@ -537,6 +552,9 @@
 <script src="https://widget.senja.io/widget/b3f56290-8c08-4008-aed3-0ee6aba5327a/platform.js" type="text/javascript" async></script>
 
 <script>
+  // Forward ad-attribution params (UTM / fbclid / lead ids) into the embedded
+  // GoHighLevel booking widget so bookings keep their source attribution.
+  // Runs BEFORE form_embed.js so the widget loads with the params already set.
   (function () {
     var allowed = [
       "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term",
@@ -549,15 +567,18 @@
       if (current.has(key)) kept.set(key, current.get(key));
     });
     if (Array.from(kept).length === 0) return;
-    document.querySelectorAll("[data-scheduler='true']").forEach(function (link) {
-      try {
-        var url = new URL(link.href, window.location.origin);
-        kept.forEach(function (value, key) { url.searchParams.set(key, value); });
-        link.href = url.toString();
-      } catch (e) { /* skip */ }
-    });
+    var iframe = document.getElementById('Fsxp0G1eFMxJJnLDPBfp_1781565974602');
+    if (!iframe) return;
+    try {
+      var url = new URL(iframe.src);
+      kept.forEach(function (value, key) { url.searchParams.set(key, value); });
+      iframe.src = url.toString();
+    } catch (e) { /* skip */ }
   })();
 </script>
+
+<!-- GoHighLevel booking widget auto-resize (loads after attribution params are set) -->
+<script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
 
 <script>
   (function () {
@@ -569,6 +590,20 @@
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+  })();
+</script>
+
+<!-- Scheduler buttons smooth-scroll to the embedded calendar (href="#schedule" is the no-JS fallback) -->
+<script>
+  (function () {
+    var target = document.getElementById('schedule');
+    if (!target) return;
+    document.querySelectorAll('[data-scheduler="true"]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
   })();
 </script>
 
